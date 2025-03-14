@@ -5,30 +5,32 @@ public class Jogador extends Criatura {
 
     private int ataqueForte = 120;
     private int ataqueBase = 40;
-
-    public Jogador (String nome) {
-        super(nome, 0);
+    private int risco = 50;
+    
+    public Jogador(String nome) {
+        super(nome, 500);
     }
 
     @Override
-    public void fraseDeApresentacao () {
-        System.out.println("Vo mata vc");
+    public void fraseDeApresentacao() {
+        System.out.println("Estou aqui para defender o bem!");
     }
-
     @Override
-    public void fraseDeMorte () {
-        System.out.println("Morri");
+    public void fraseDeMorte() {
+        System.out.println("Meus amigos vão vingar minha morte.");
     }
 
     @Override
     public void fazAtaque(Criatura criatura) {
+        System.out.println(String.format("Vez de %s Atacar.", 
+        this.getNome()));
 
         Scanner scan = new Scanner (System.in);
 
-        System.out.println("Escolha sua arma");
-        System.out.println(String.format("1- Faca %1 de dano.", 
+        System.out.println("Escolha seu ataque: ");
+        System.out.println(String.format("1- Faca %1 de dano. Taxa de risco = 0%", 
         this.ataqueBase));
-        System.out.println(String.format("2 - Flecha %1 de dano.", 
+        System.out.println(String.format("2 - Flecha %1 de dano. Taxa de risco = 50%", 
         this.ataqueForte));
         
         int escolha = scan.nextInt();
@@ -38,8 +40,8 @@ public class Jogador extends Criatura {
         } else if (escolha == 2) {
          Random rd = new Random();
          int sorteio = rd.nextInt(0, 100);
-         if (sorteio < 50) {
-            System.out.println("Ataque Falhou");
+         if (sorteio < risco) {
+            System.out.println("Ataque Falhou.");
          } else {
             System.out.println("Acertou!");
             criatura.tomaDano(ataqueForte);
@@ -48,7 +50,6 @@ public class Jogador extends Criatura {
         } else {
             criatura.tomaDano(0);
         }
-
 
     }
     

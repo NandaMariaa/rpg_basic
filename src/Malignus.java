@@ -1,4 +1,4 @@
-public abstract class Malignus extends Inimigo {
+public class Malignus extends Inimigo {
 
     public Malignus() {
         super("Maligus", 500, 50);
@@ -6,7 +6,7 @@ public abstract class Malignus extends Inimigo {
 
     @Override 
     public void fraseDeApresentacao () {
-        System.out.println("Vou te mata");
+        System.out.println("A lamina que não se vê, é a mais mortifera.");
     }
 
     @Override 

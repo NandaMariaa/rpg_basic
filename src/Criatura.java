@@ -6,7 +6,10 @@ public abstract class Criatura {
     public Criatura (String nome, int vida) {
         this.nome = nome;
         this.vida = vida;
-        
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public abstract void fraseDeApresentacao ();
@@ -14,28 +17,22 @@ public abstract class Criatura {
     public abstract void fazAtaque (Criatura criatura);
 
     public boolean estaVivo () {
-
-        if (vida > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return this.vida > 0;
     }
 
     public void tomaDano ( int dano ) {
-        if ( dano > this.vida ) {
+        if( dano > this.vida ){
             this.vida = 0;
         } else {
             this.vida -= dano;
         }
-        //System.out.println(String.format("%s recebeu %1 de dano.", 
-        //this.nome, dano));
+        System.out.println(this.nome + " toma " 
+                            + dano + " de dano.");
     }
 
     public void mostraVida () {
-        //System.out.println(String.format("%s tem %1 pontos de vida.", 
-        //this.nome, vida));
+        System.out.println(this.nome + " tem " +  
+                           this.vida + " de vida!");
     }
 
 
