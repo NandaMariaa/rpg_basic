@@ -4,10 +4,12 @@ public class Jogo {
         
         Criatura jogador = new Terrivel();
         Criatura inimigo = new Malignus();
+        Criatura jogador1 = new Jogador("Fernanda", 600);
         
         System.out.println("Bem vindos a grande batalha!");
         jogador.fraseDeApresentacao();
         inimigo.fraseDeApresentacao();
+
         while(true){
             jogador.fazAtaque(inimigo);
             if(inimigo.estaVivo()){
@@ -29,7 +31,5 @@ public class Jogo {
                 break;
             }
         }
-        
-        
     }
 }

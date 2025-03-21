@@ -1,7 +1,7 @@
 public class Malignus extends Inimigo {
 
     public Malignus() {
-        super("Maligus", 500, 50);
+        super("Maligus", 500, 50, new Bloqueio(30));
     }
 
     @Override 

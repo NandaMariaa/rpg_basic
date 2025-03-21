@@ -1,7 +1,7 @@
 public class Terrivel extends Inimigo {
 
     public Terrivel() {
-        super("Terrível", 1000, 25);
+        super("Terrível", 1000, 25, new Esquiva(20));
     }
 
     @Override

@@ -1,14 +1,20 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class Jogador extends Criatura {
 
     private int ataqueForte = 120;
     private int ataqueBase = 40;
     private int risco = 50;
+    private Arma [] armas = new Arma {};
     
-    public Jogador(String nome) {
+    public Jogador (String nome) {
         super(nome, 500);
+
+        this.armas = new Arma [] { new Faca(), new Arco()};
+    }
+
+    public Jogador (String nome, int vida) {
+        super (nome, vida);
     }
 
     @Override
@@ -28,28 +34,23 @@ public class Jogador extends Criatura {
         Scanner scan = new Scanner (System.in);
 
         System.out.println("Escolha seu ataque: ");
-        System.out.println(String.format("1- Faca %1 de dano. Taxa de risco = 0%", 
-        this.ataqueBase));
-        System.out.println(String.format("2 - Flecha %1 de dano. Taxa de risco = 50%", 
-        this.ataqueForte));
+        int i = 0;
+        for ( Arma arma : this.armas) {
+            i++;
+            System.out.println(i + ") " + arma.mensagem());
+        }
         
         int escolha = scan.nextInt();
 
-        if (escolha == 1) {
-            criatura.tomaDano(this.ataqueBase);
-        } else if (escolha == 2) {
-         Random rd = new Random();
-         int sorteio = rd.nextInt(0, 100);
-         if (sorteio < risco) {
-            System.out.println("Ataque Falhou.");
-         } else {
-            System.out.println("Acertou!");
-            criatura.tomaDano(ataqueForte);
-         }
+        scan.close();
 
-        } else {
-            criatura.tomaDano(0);
-        }
+        int danoAtual = this.armas[escolha -1].getDano();
+        criatura.tomaDano(danoAtual);
+
+
+
+
+
 
     }
     
