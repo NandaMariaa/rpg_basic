@@ -5,7 +5,11 @@ public class Jogador extends Criatura {
     private int ataqueForte = 120;
     private int ataqueBase = 40;
     private int risco = 50;
-    private Arma [] armas = new Arma {};
+    private Arma [] armas = new Arma {new Faca (),
+                                        new Arco(),
+                                        new Pistola(),
+                                        new Espada()
+                                     };
     
     public Jogador (String nome) {
         super(nome, 500);
@@ -47,11 +51,5 @@ public class Jogador extends Criatura {
         int danoAtual = this.armas[escolha -1].getDano();
         criatura.tomaDano(danoAtual);
 
-
-
-
-
-
     }
-    
 }
